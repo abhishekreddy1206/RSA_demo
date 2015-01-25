@@ -1,0 +1,299 @@
+{% extends 'registration/layout.html' %}
+
+{% block content %}
+        {%verbatim%}
+        <a id="errorMessage"></a>
+        <div class="page-header">
+            <h1>Online Registration</h1>
+        </div>
+
+        <form name="registerForm" data-ng-app="registrationApp" data-ng-controller="OnlineRegistrationController" data-ng-submit="addOnlineRegistration(registerForm.$valid)" novalidate>
+            <div class="alert alert-danger" data-ng-show="registerForm.$invalid && submitted">
+                The following fields in red are required:
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Parent/Guardian Information
+                </div>
+                <div class="panel panel-body">
+                    <div class="row">
+                        <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.father_first_name.$invalid && submitted }">
+                            <label for="father_first_name">Father's First Name</label>
+                            <input type="text" data-ng-model="parent.father_first_name" class="form-control" name="father_first_name" id="father_first_name" placeholder="Father's First Name" required>
+                            <p data-ng-show="registerForm.father_first_name.$invalid && submitted" class="help-block">First name is required.</p>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4">
+                            <label for="father_middle_name">Father's Middle Name</label>
+                            <input type="text" data-ng-model="parent.father_middle_name" class="form-control" name="father_middle_name" id="father_middle_name" placeholder="Father's Middle Name">
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.father_last_name.$invalid && submitted }">
+                            <label for="father_last_name">Father's Last Name</label>
+                            <input type="text" data-ng-model="parent.father_last_name" class="form-control" name="father_last_name" id="father_last_name" placeholder="Father's Last Name" required>
+                            <p data-ng-show="registerForm.father_last_name.$invalid && submitted" class="help-block">Last name is required.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.mother_first_name.$invalid && submitted }">
+                            <label for="mother_first_name">Mother's First Name</label>
+                            <input type="text" data-ng-model="parent.mother_first_name" class="form-control" name="mother_first_name" id="mother_first_name" placeholder="Mother's First Name" required>
+                            <p data-ng-show="registerForm.mother_first_name.$invalid && submitted" class="help-block">First name is required.</p>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4">
+                            <label for="mother_middle_name">Mother's Middle Name</label>
+                            <input type="text" data-ng-model="parent.mother_middle_name" class="form-control" name="mother_middle_name" id="mother_middle_name" placeholder="Mother's Middle Name">
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.mother_last_name.$invalid && submitted }">
+                            <label for="mother_last_name">Mother's Last Name</label>
+                            <input type="text" data-ng-model="parent.mother_last_name" class="form-control" name="mother_last_name" id="mother_last_name" placeholder="Mother's Last Name" required>
+                            <p data-ng-show="registerForm.mother_last_name.$invalid && submitted" class="help-block">Last name is required.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6 col-md-6" data-ng-class="{ 'has-error' : registerForm.street_address.$invalid && submitted }">
+                            <label for="street_address">Street Address</label>
+                            <input type="text" data-ng-model="parent.street_address" class="form-control" name="street_address" id="street_address" placeholder="Full Street Address" required>
+                            <p data-ng-show="registerForm.street_address.$invalid && submitted" class="help-block">Street address is required.</p>
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3" data-ng-class="{ 'has-error' : registerForm.city.$invalid && submitted }">
+                            <label for="city">City</label>
+                            <input type="text" data-ng-model="parent.city" class="form-control" name="city" id="city" placeholder="City" required>
+                            <p data-ng-show="registerForm.city.$invalid && submitted" class="help-block">City is required.</p>
+                        </div>
+                        <div class="form-group col-lg-1 col-md-1" data-ng-class="{ 'has-error' : registerForm.state.$invalid && submitted }">
+                            <label for="state">State</label>
+                            <input type="text" data-ng-model="parent.state" class="form-control" name="state" id="state" placeholder="State" required>
+                            <p data-ng-show="registerForm.state.$invalid && submitted" class="help-block">State is required.</p>
+                        </div>
+                        <div class="form-group col-lg-2 col-md-2" data-ng-class="{ 'has-error' : registerForm.zip_code.$invalid && submitted }">
+                            <label for="zip_code">Zip Code</label>
+                            <input type="text" data-ng-model="parent.zip_code" class="form-control" name="zip_code" id="zip_code" placeholder="Zip Code" required>
+                            <p data-ng-show="registerForm.zip_code.$invalid && submitted" class="help-block">Zip code is required.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-3 col-md-3" data-ng-class="{ 'has-error' : registerForm.home_phone.$invalid && submitted }">
+                            <label for="home_phone">Home Phone #</label>
+                            <input type="tel" data-ng-model="parent.home_phone" class="form-control" name="home_phone" id="home_phone" placeholder="123-456-7890" required>
+                            <p data-ng-show="registerForm.home_phone.$invalid && submitted" class="help-block">Home phone # is required.</p>
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3">
+                            <label for="mother_phone">Mother's Cell Phone</label>
+                            <input type="tel" data-ng-model="parent.mother_phone" class="form-control" id="mother_phone" placeholder="123-456-7890">
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3">
+                            <label for="father_phone">Father's Cell Phone</label>
+                            <input type="tel" data-ng-model="parent.father_phone" class="form-control" id="father_phone" placeholder="123-456-7890">
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3">
+                            <label for="other_phone">Additional Phone #</label>
+                            <input type="tel" data-ng-model="parent.other_phone" class="form-control" id="other_phone" placeholder="123-456-7890">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6 col-md-6" data-ng-class="{ 'has-error' : registerForm.mother_email.$invalid && submitted }">
+                            <label for="mother_email">Mother's email address</label>
+                            <input type="email" data-ng-model="parent.mother_email" class="form-control" name="mother_email" id="mother_email" placeholder="abc@xyz.com">
+                            <p data-ng-show="registerForm.mother_email.$invalid && submitted" class="help-block">Enter a valid email.</p>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6" data-ng-class="{ 'has-error' : registerForm.father_email.$invalid && submitted }">
+                            <label for="father_email">Father's email address</label>
+                            <input type="email" data-ng-model="parent.father_email" class="form-control" name="father_email" id="father_email" placeholder="abc@xyz.com">
+                            <p data-ng-show="registerForm.father_email.$invalid && submitted" class="help-block">Enter a valid email.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary" ng-repeat="student in students">
+                <div class="panel-heading">
+                    Child <span data-ng-show="students.length > 1">{{$index + 1}}</span> Information
+                    <span class="deleteChild pull-right" title="Remove Child" data-ng-show="students.length > 1">
+                        <span class="glyphicon glyphicon-remove" data-toggle="modal" data-target="#confirmDelete" data-ng-click="assignIndex($index)"></span>
+                    </span>
+                </div>
+                <div class="panel panel-body">
+                    <div style="padding-bottom:20px;">
+                        <div class="row">
+                            <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.first_name.$invalid && submitted }">
+                                <label for="first_name">First Name</label>
+                                <input type="text" data-ng-model="student.first_name" class="form-control" name="first_name" id="first_name" placeholder="First Name" required>
+                                <p data-ng-show="registerForm.first_name.$invalid && submitted" class="help-block">First name is required.</p>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4">
+                                <label for="middle_name">Middle Name</label>
+                                <input type="text" data-ng-model="student.middle_name" class="form-control" id="middle_name" placeholder="Middle Name">
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.last_name.$invalid && submitted }">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" data-ng-model="student.last_name" class="form-control" name="last_name" id="last_name" placeholder="Last Name" required>
+                                <p data-ng-show="registerForm.last_name.$invalid && submitted" class="help-block">Last name is required.</p>
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.dob.$invalid && submitted }">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" data-ng-model="student.dob" class="form-control" name="dob" id="dob" required>
+                                <p data-ng-show="registerForm.dob.$invalid && submitted" class="help-block">Date of birth is required.</p>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.gender.$invalid && submitted }">
+                                <label class="radio_buttons control-label">
+                                    Gender
+                                </label>
+                                <div class="control-group">
+                                    <label class="radio-inline">
+                                        <input data-ng-model="student.gender" id="gender_male" name="gender" type="radio" value="M" required>Male
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input data-ng-model="student.gender" id="gender_female" name="gender" type="radio" value="F" required>Female
+                                    </label>
+                                    <p data-ng-show="registerForm.gender.$invalid && submitted" class="help-block">Gender is required.</p>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.grade_applying_for.$invalid && submitted }">
+                                <label for="grade_applying_for">Grade Applying For</label>
+                                <select class="form-control" data-ng-model="student.grade_applying_for" name="grade_applying_for" id="grade_applying_for" data-ng-options="grade for grade in gradeList track by grade" required></select>
+                                <p data-ng-show="registerForm.grade_applying_for.$invalid && submitted" class="help-block">Grade applying for is required.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-4 col-md-4" data-ng-class="{ 'has-error' : registerForm.ethnicity.$invalid && submitted }">
+                                <label class="radio_buttons control-label">
+                                    Ethnicity
+                                </label>
+                                <div class="control-group">
+                                    <label class="radio-inline">
+                                        <input data-ng-model="student.ethnicity" id="ethnicity_hisp" name="ethnicity" type="radio" value="H" required>Hispanic or Latino
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input data-ng-model="student.ethnicity" id="ethnicity_noHisp" name="ethnicity" type="radio" value="NH" required>Not Hispanic or Latino
+                                    </label>
+                                    <p data-ng-show="registerForm.ethnicity.$invalid && submitted" class="help-block">Ethnicity is required.</p>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-8 col-md-8">
+                                <label class="radio_buttons control-label">
+                                    Race <i>(select all that apply)</i>
+                                </label>
+                                <div class="control-group">
+                                    <label class="checkbox-inline">
+                                      <input type="checkbox" data-ng-model="student.amerInd" id="amerInd" ng-true-value="I," ng-false-value=""> American Indian/Alaska Native
+                                    </label>
+                                    <label class="checkbox-inline">
+                                      <input type="checkbox" data-ng-model="student.asian" id="asian" ng-true-value="A," ng-false-value=""> Asian
+                                    </label>
+                                    <label class="checkbox-inline">
+                                      <input type="checkbox" data-ng-model="student.black" id="black" ng-true-value="B," ng-false-value=""> Black
+                                    </label>
+                                    <label class="checkbox-inline">
+                                      <input type="checkbox" data-ng-model="student.hawPacIsl" id="hawPacIsl" ng-true-value="P," ng-false-value=""> Native Hawaiian/Other Pacific Islander
+                                    </label>
+                                    <label class="checkbox-inline">
+                                      <input type="checkbox" data-ng-model="student.white" id="white" ng-true-value="W," ng-false-value=""> White
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border-top:1px solid;padding-top:30px">
+                        <div class="row">
+                            <div class="form-group col-lg-8 col-md-8">
+                                <label for="prev_school_name">Previous School Attended</label>
+                                <input type="text" data-ng-model="student.prev_school_name" class="form-control" id="prev_school_name" placeholder="School Name">
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4">
+                                <label for="current_grade">Previous Grade</label>
+                                <select class="form-control" data-ng-model="student.current_grade" name="current_grade" id="current_grade" data-ng-options="grade for grade in currentGrade track by grade"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6 col-md-6">
+                                <label for="prev_school_address">Street Address</label>
+                                <input type="text" data-ng-model="student.prev_school_address" class="form-control" id="prev_school_address" placeholder="Full Street Address">
+                            </div>
+                            <div class="form-group col-lg-3 col-md-3">
+                                <label for="prev_school_city">City</label>
+                                <input type="text" data-ng-model="student.prev_school_city" class="form-control" id="prev_school_city" placeholder="City">
+                            </div>
+                            <div class="form-group col-lg-1 col-md-1">
+                                <label for="prev_school_state">State</label>
+                                <input type="text" data-ng-model="student.prev_school_state" class="form-control" id="prev_school_state" placeholder="State">
+                            </div>
+                            <div class="form-group col-lg-2 col-md-2">
+                                <label for="prev_school_zip">Zip Code</label>
+                                <input type="text" data-ng-model="student.prev_school_zip" class="form-control" id="prev_school_zip" placeholder="Zip Code">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6 col-md-6">
+                                <label for="prev_school_phone">Phone #</label>
+                                <input type="tel" data-ng-model="student.prev_school_phone" class="form-control" id="prev_school_phone" placeholder="123-456-7890">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6" data-ng-class="{ 'has-error' : registerForm.prev_school_email.$invalid && submitted }">
+                                <label for="prev_school_email">Email address</label>
+                                <input type="email" data-ng-model="student.prev_school_email" class="form-control" name="prev_school_email" id="prev_school_email" placeholder="abc@xyz.com">
+                                <p data-ng-show="registerForm.prev_school_email.$invalid && submitted" class="help-block">Enter a valid email.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="col-lg-12 col-md-12">
+                        <p style="font-size:14px">I verify that I provided the information accurately.</p>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6" data-ng-class="{ 'has-error' : registerForm.esignature.$invalid && submitted }">
+                        <label for="parentSignature">Signature:</label>
+                        <input type="text" data-ng-model="parent.esignature" class="form-control" name="parentSignature" id="parentSignature" placeholder="Signature" required>
+                        <p data-ng-show="registerForm.esignature.$invalid && submitted" class="help-block">Electronic signature is required.</p>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6" data-ng-class="{ 'has-error' : registerForm.signed_date.$invalid && submitted }">
+                        <label for="dateVerification">Date:</label>
+                        <input type="date" data-ng-model="parent.signed_date" class="form-control" name="dateVerification" id="dateVerification" required>
+                        <p data-ng-show="registerForm.signed_date.$invalid && submitted" class="help-block">Date is required.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group pull-right">
+                <div class="form-group col-lg-12">
+                    <span class="btn btn-primary" ng-click="addChild();">
+                        <span class="glyphicon glyphicon-plus"></span> Add Child
+                    </span>
+                    <button class="btn btn-success" data-ng-show="!registering" type="submit">
+                        <span class="glyphicon glyphicon-ok"></span> Register
+                    </button>
+                    <span class="btn btn-default pull-right" data-ng-show="registering" style="cursor:not-allowed">
+                        <img src="/static/registration/images/loading-icon.gif" height="16" width="16" /> Saving
+                    </span>
+                </div>
+            </div>
+            <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            Are you sure you would like to remove this child?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-danger" data-ng-click="removeChild()" data-dismiss="modal">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        {%endverbatim%}
+        <style>
+            .help-block {
+                font-size: 14px;
+                font-weight: 700;
+            }
+            .deleteChild {
+                font-size: 18px;
+                cursor:pointer;
+            }
+            .deleteChild:hover {
+                color: yellow;
+            }
+        </style>
+    {% endblock content %}

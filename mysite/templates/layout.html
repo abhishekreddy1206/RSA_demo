@@ -1,0 +1,79 @@
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Radiant STEM Academy - {% block title %}{% endblock title %}</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    {% render_block "css" %}
+	    <link rel="stylesheet" href="/static/css/radiantstem.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    	<link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    	<link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    	<link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.common.min.css" rel="stylesheet" />
+	    <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.default.min.css" rel="stylesheet" />
+	    <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.dataviz.min.css" rel="stylesheet" />
+
+	    <script src="http://cdn.kendostatic.com/2014.1.528/js/jquery.min.js"></script>
+    	<script src="http://cdn.kendostatic.com/2014.1.528/js/kendo.all.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        {% render_block "js" %}
+	</head>
+	<body>
+		{% cms_toolbar %}
+		<style>
+			html, body {
+				height:100%;
+			}
+			#fullPage {
+				background-color:#729672;
+				min-height:100%;
+			}
+			.containBG {				
+				background-color:white;
+				overflow:hidden;
+			}
+			.navbar {
+				margin-bottom:0px;
+			}
+		</style>
+		<div class="section" id="headerPage">
+			<div class="hidden-sm hidden-xs container containBG">
+	      		<a href="../"><img class="logo" src="/static/images/rsa_logo.png" alt="Radiant STEM Academy"></a>
+	      		<h2 class="pull-right motto">
+	              Everyone is an Achiever
+	      		</h2>
+	      	</div>
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="container">
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapseBar">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <!-- <a class="navbar-brand" href="/">Home</a> -->
+				    </div>
+				    <div class="collapse navbar-collapse" id="collapseBar">
+				      <ul class="nav navbar-nav">
+				        {% show_menu 0 1 100 100 "menu.html" %}
+					<li><a href="/weblog">News</a></li>
+				      </ul>
+				      <ul class="nav navbar-nav navbar-right">
+		                <li><a href="/admin">Login</a></li>
+		              </ul>
+				    </div>
+			    </div>
+			</nav>
+		</div>
+		<div class="section" id="fullPage">
+			<div class="container containBG">
+				{% block content %}
+            	{% endblock content %}
+			</div>
+		</div>
+	</body>
+</html>

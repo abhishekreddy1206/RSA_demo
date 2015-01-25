@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row" style="margin-top:20px">
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-warning btn-group-lg" type="button" onclick="window.open('', '_blank');">Download Registration Form</button>
+        <button class="btn btn-success btn-group-lg" type="button" onclick="window.open('/register', '_self');">Register Online</button>
+    </div>
+    <div class="page-header">
+        <h1>Tuition and Fees</h1>
+    </div>
+    <p>
+        Registration fees are nonrefundable. 
+        Resource fees will be refunded 100% before two weeks of start of school, 
+        50% will be refunded within the first month of the academic year; 
+        no refund will be made after the first month of the academic year.</p>
+
+    <div class="panel panel-success">
+        <div class="panel-heading"><strong>Radiant STEM Academy Tuition</strong></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Grades</th>
+                            <th>Monthly Tuition</th>
+                            <th>Annual Tuition</th>
+                            <th>Registration Fee</th>
+                            <th>Resource Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pre-K Full Time</td>
+                            <td>$ 400</td>
+                            <td>$ 4,000</td>
+                            <td>$ 50</td>
+                            <td>$ 350</td>
+                        </tr>
+                        <tr>
+                            <td>Pre-K Part Time</td>
+                            <td>$ 300</td>
+                            <td>$ 3,000</td>
+                            <td>$ 50</td>
+                            <td>$ 350</td>
+                        </tr>
+                        <tr>
+                            <td>KG - 5<sup>th</sup></td>
+                            <td>$ 350</td>
+                            <td>$ 3,500</td>
+                            <td>$ 50</td>
+                            <td>$ 350</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <div class="panel-heading"><strong>Radiant STEM Academy Tuition Discount</strong></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Number of Children</th>
+                            <th>Discount Percentage</th>
+                            <th>Annual Discount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1<sup>st</sup> Child</td>
+                            <td>0 %</td>
+                            <td>$ 0</td>
+                        </tr>
+                        <tr>
+                            <td>2<sup>nd</sup> Child</td>
+                            <td>25 %</td>
+                            <td>$ 875</td>
+                        </tr>
+                        <tr>
+                            <td>3<sup>rd</sup> Child</td>
+                            <td>50 %</td>
+                            <td>$ 1,750</td>
+                        </tr>
+                        <tr>
+                            <td>4<sup>th</sup> Child and More</td>
+                            <td>100 %</td>
+                            <td>Tuition Waived</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <div class="panel-heading"><strong>Radiant STEM Academy Tuition Payment Options</strong></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><strong> Option A</strong></td>
+                            <td>Two Equal Payments</td>
+                            <td>
+                                1<sup>st</sup> Payment due: August 1, 2014<br />
+                                2<sup>nd</sup> Payment due: January 1, 2014
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong> Option B</strong></td>
+                            <td>Three Equal Payments</td>
+                            <td>
+                                1<sup>st</sup> Payment due: August 1, 2014<br />
+                                2<sup>nd</sup> Payment due: November 1, 2014<br />
+                                3<sup>rd</sup> Payment due: February 1, 2014
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong> Option C</strong></td>
+                            <td>Ten Equal Payments</td>
+                            <td>
+                                Payments are due on the 1<sup>st</sup> of each month,<br />
+                                from August 2014 to May 2015.<br />
+                                1<sup>st</sup> Payment due: August 1, 2014
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
