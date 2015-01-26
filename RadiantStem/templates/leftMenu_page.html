@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% load cms_tags staticfiles sekizai_tags menu_tags %}
 
-{% block content %}
+{% block maincontent %}
 <div class="row" style="margin-top:20px">
 	<div class="col-md-3">
 		{% show_menu 0 1 100 100 "left_menu.html" %}
@@ -10,4 +10,4 @@
 		{% placeholder "rightContent" %}
 	</div>
 </div>
-{% endblock content %}
+{% endblock maincontent %}

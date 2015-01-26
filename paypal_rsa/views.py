@@ -10,24 +10,21 @@ from django.template import RequestContext
 import pdb
 
 def money_request(request):
-    # pdb.set_trace()
     # What you want the button to do.
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "item_name": "Event Registration",
-        "notify_url": "http://20705043.ngrok.com" + reverse('paypal-ipn'),
-        "return_url": "http://20705043.ngrok.com/paypal/confirm",
-        "cancel_return": "http://20705043.ngrok.com/paypal/",
+        "notify_url": "http://demo.radiantstem.com" + reverse('paypal-ipn'),
+        "return_url": "http://demo.radiantstem.com/paypal/confirm",
+        "cancel_return": "http://demo.radiantstem.com/paypal/",
     }
 
     # Create the instance.
     form = PayPalPaymentsForm(initial=paypal_dict)
     context = {"form": form}
-    # return render_to_response("paypal_rsa/payment.html", context, context_instance=RequestContext(request))
     return render_to_response("paypal_page.html", context, context_instance=RequestContext(request))
 
 def show_me_the_money(sender, **kwargs):
-    # pdb.set_trace()
     ipn_obj = sender
     if ipn_obj.payment_status == ST_PP_COMPLETED:
         # Undertake some action depending upon `ipn_obj`.
