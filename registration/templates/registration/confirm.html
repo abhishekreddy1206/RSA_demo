@@ -1,40 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Radiant STEM Academy - {% block title %}{% endblock title %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="stylesheet" href="/static/css/radiantstem.css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-        <link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
-        <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.common.min.css" rel="stylesheet" />
-        <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.default.min.css" rel="stylesheet" />
-        <link href="http://cdn.kendostatic.com/2014.1.528/styles/kendo.dataviz.min.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="/static/css/registration/ng-table.min.css" />
+{% extends 'layout.html' %}
 
-        <script src="http://cdn.kendostatic.com/2014.1.528/js/jquery.min.js"></script>
-        <script src="http://cdn.kendostatic.com/2014.1.528/js/kendo.all.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-        <script src="/static/js/registration/ng-table.min.js"></script>
-        <script src="/static/js/registration/angular-ui-router.min.js"></script>
-        <script src="/static/js/registration/registrationApp.js"></script>
-        
-    </head>
-    <body>
-    	<style>
-			html, body {
-				height:100%;
-			}
-    	</style>
-        <div class="col-md-12 text-center">
-		    <p>
-		        <h2>
-		            <span class="label label-success">Thank you for registering your child.</span>
-		        </h2>
-		    </p>
-		</div>      
-    </body>
-</html>
+{% block content %}
+	<div class="col-md-12 text-center">
+	    <h2>
+            <span class="label label-success">Thank you for registering your child.</span>
+        </h2>
+	</div>
+{% endblock content %}

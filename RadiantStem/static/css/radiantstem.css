@@ -1,0 +1,11 @@
+.logo {
+    height: 65px;
+}
+
+.motto {
+    font-family: 'Permanent Marker', cursive;
+    font-weight: 600;
+    font-style: italic;
+    color: #b92c28;
+    text-shadow: 4px 4px 4px #aaa;
+}

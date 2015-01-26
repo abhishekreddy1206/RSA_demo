@@ -4,7 +4,7 @@ from django.db import models
 
 class Commoninfo(models.Model):
 	comment = models.CharField(max_length=1000, null=True, blank=True)
-	updated = models.DateField(null=True, blank=True)
+	updated = models.DateField(auto_now=True, null=True, blank=True)
 	updatedby = models.CharField(max_length=100, null=True, blank=True)
 
 	class Meta:

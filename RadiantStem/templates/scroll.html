@@ -1,0 +1,203 @@
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Radiant STEM Academy - {% block title %}{% endblock title %}</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    {% render_block "css" %}
+	    <link rel="stylesheet" href="{% static "css/radiantstem.css" %}" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    	<link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		{% cms_toolbar %}
+		<style>
+			html, body {
+				height:100%;
+			}
+			#eventSection {
+				background-color:#729672;
+			}
+			#fullPage1, #fullPage2, #fullPage3, #fullPage4 {
+				background-color:#729672;
+				min-height:100%;
+			}
+			.containBG {				
+				background-color:white;
+				overflow:hidden;
+			}
+			.navbar {
+				margin-bottom:0px;
+			}
+			.arrows {
+		    	position:fixed;
+		    	right:2%;
+		    	bottom:3%;
+		    	color:black;
+		    	font-size:48px;
+		    	z-index:9998;
+		    	cursor:pointer;
+		    }
+		    #up:hover, #down:hover {
+		    	color:blue;
+		    }
+		    #banner1, #banner2, #banner3, #banner4 {
+		    	width:100%;
+		    	height:100px;
+		    	background-color:#ed9c28;
+		    	color:white;
+		    }
+		    .noPad {
+		    	padding-left:0px;
+		    	padding-right:0px;
+		    }
+		    .padTop {
+		    	padding-top:70px;
+		    }
+		</style>
+		<div class="arrows">
+			<div id="up"><span class="glyphicon glyphicon-circle-arrow-up" onclick="prevSection()"></span></div>
+			<div id="down"><span class="glyphicon glyphicon-circle-arrow-down" onclick="nextSection()"></span></div>
+		</div>
+		<div class="section" id="headerPage">
+			<div class="hidden-sm hidden-xs container containBG">
+	      		<a href="../"><img class="logo" src="/static/images/rsa_logo.png" alt="Radiant STEM Academy"></a>
+	      		<h2 class="pull-right motto">
+	              Everyone is an Achiever
+	      		</h2>
+	      	</div>
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="container">
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapseBar">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				    </div>
+				    <div class="collapse navbar-collapse" id="collapseBar">
+				      <ul class="nav navbar-nav">
+				        {% show_menu 0 1 100 100 "menu.html" %}
+					<li><a href="/weblog">News</a></li>
+				      </ul>
+				      <ul class="nav navbar-nav navbar-right">
+		                <li><a href="/admin">Login</a></li>
+		              </ul>
+				    </div>
+			    </div>
+			</nav>
+		</div>			
+		<div class="section" id="fullPage1">
+			<div class="container noPad">
+				<div id="banner1">
+				</div>
+			</div>
+			<div class="container containBG">
+				{% placeholder "content1" %}
+			</div>
+		</div>
+		<div class="section" id="fullPage2">
+			<div class="container noPad">
+				<div id="banner2">
+				</div>
+			</div>
+			<div class="container containBG">
+				{% placeholder "content2" %}
+			</div>
+		</div>
+		<div class="section" id="fullPage3">
+			<div class="container noPad">
+				<div id="banner3">
+				</div>
+			</div>
+			<div class="container containBG">
+				{% placeholder "content3" %}
+			</div>
+		</div>
+		<div class="section" id="fullPage4">
+			<div class="container noPad">
+				<div id="banner4">
+				</div>
+			</div>
+			<div class="container containBG">
+				{% placeholder "content4" %}
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	    <script>
+	    	var nextSection = function () {
+	    		debugger;
+	    		var urlHash = window.location.hash;
+	    		if(urlHash == "") {
+	    			urlHash = "#headerPage";
+	    		}
+	    		var nextHash = '#'+ $("div.section"+ urlHash).nextAll("div.section:first")[0].id;
+	    		// .next("div.section")[0].id;
+	            
+	            $target = $(nextHash);
+
+			    $('html, body').stop().animate({
+			        'scrollTop': $target.offset().top
+			    }, 900, 'swing', function () {
+			        window.location.hash = nextHash;
+			        if(nextHash == "#fullPage2") {
+			        	$("#up").show();
+			        }
+			    });	    		
+	    	}
+	    	var prevSection = function () {
+	    		debugger;
+	    		var urlHash = window.location.hash;
+	    		var prevHash = '#'+ $("div.section"+ urlHash).prevAll("div.section:first")[0].id;
+	    		// .prev("div.section")[0].id;
+	            
+	            $target = $(prevHash);
+
+			    $('html, body').stop().animate({
+			        'scrollTop': $target.offset().top
+			    }, 900, 'swing', function () {
+			        window.location.hash = prevHash;
+			        if(prevHash == '#fullPage1') {
+			        	$("#up").hide();
+			        }
+			    });	    		
+	    	}
+	    	$("#up").hide();
+	    	
+		    var distance = $('.navbar').offset().top,
+		    // var distance = $('#fullPage1').offset().top,
+		    $window = $(window);
+
+			$(window).on("scroll", function(e) {
+			  if ($window.scrollTop() >= distance) {
+			    $(".navbar").addClass("navbar-fixed-top");
+			    $("body").addClass("padTop");
+			  } else {
+			    $(".navbar").removeClass("navbar-fixed-top");
+			    $("body").removeClass("padTop");
+			  }				  
+			});
+			$(document).ready(function(){
+				window.location.hash = "";
+				$('a[href^="#"]').on('click',function (e) {
+				    e.preventDefault();
+
+				    var target = this.hash;
+				    $target = $(target);
+
+				    $('html, body').stop().animate({
+				        'scrollTop': $target.offset().top
+				    }, 900, 'swing', function () {
+				        window.location.hash = target;
+				    });
+				});
+			});
+		</script>
+		{% render_block "js" %}
+	</body>
+</html>
